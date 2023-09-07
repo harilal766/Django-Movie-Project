@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--<div class="login-wrapper" id="login-content">-->
+<!--    <div class="container login-content" style="margin-top:100px;">-->
+<!--    <h1>LOGIN</h1>-->
+<!--    <div class="messages">-->
+<!--        {% for i in messages%}-->
+<!--        <h2>{{i}}</h2>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+
+<!--    <form method="POST" enctype="multipart/form-data">-->
+<!--        {% csrf_token %}-->
+<!--        <div class="mb-3">-->
+<!--            <label for="exampleInputEmail1" class="form-label"></label>-->
+<!--            <input class="form-control" type="text" name="u" placeholder="Username">-->
+<!--            <div class="form-text"></div>-->
+<!--        </div>-->
+
+<!--        <div class="mb-3">-->
+<!--            <label class="form-label"></label>-->
+<!--            <input type="password" name="p" class="form-control" placeholder="Password." required="required"></input>-->
+<!--        </div>-->
+
+<!--        <div class="row">-->
+<!--            <div class="remember">-->
+<!--                <div>-->
+<!--                    <input type="checkbox" name="remember" value="Remember me"><span>Remember me</span>-->
+<!--                </div>-->
+<!--                <a href="#">Forgot password ?</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <button type="submit" class="btn btn-danger">Submit</button>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Signup</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Signup</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="">
+				<div class="form-style-1 user-pro" action="#">
+					<form method="POST" enctype="multipart/form-data" class="user">
+						{% csrf_token %}
+						{% for i in messages %}
+							<h4>{{i}}</h4>
+						{% endfor %}
+						<div class="row">
+							<div class="col-md-12 form-it">
+								<label>Username</label>
+								<input type="text" name="username" placeholder="Enter your Username">
+							</div>
+							<div class="col-md-12 form-it">
+								<label>Email Address</label>
+								<input type="text" name="mail" placeholder="Enter your mail id">
+							</div>
+							<div class="col-md-12 form-it">
+								<label>Password</label>
+								<input type="password" name="password" placeholder="Type your password">
+							</div>
+							<div class="col-md-12 form-it">
+								<label>Confirm Password</label>
+								<input type="password" name="confirmpassword" placeholder="Re-Type your password">
+							</div>
+							<div class="col-md-3" style="margin-left:35%;">
+								<input class="submit" type="submit" value="Sign up">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% load static %}
+<div class="topbar-filter">
+    {% if count == 1 %}
+    <p>Found <span>{{count}} movie</span> in total</p>
+    {% elif count > 1 %}
+    <p>Found <span>{{count}} movies</span> in total</p>
+    {% else %}
+    <p>Found <span>0 movies</span> in total</p>
+    {% endif %}
+
+    <label>Filter by:</label>
+  <select>
+    <option value="popularity">Popularity Descending</option>
+    <option value="popularity">Popularity Ascending</option>
+	<option value="rating">Rating Descending</option>
+	<option value="rating">Rating Ascending</option>
+	<option value="date">Release date Descending</option>
+	<option value="date">Release date Ascending</option>
+  </select>
+</div>

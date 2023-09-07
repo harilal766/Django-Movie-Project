@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>{{user}}’s profile</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Profile</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			{% include 'user.html' %}
+			{% block user %}{% endblock %}
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="form-style-1 user-pro" action="#">
+                    <form method="POST" enctype="multipart/form-data" class="user">
+                    {% csrf_token %}
+                        <div>
+                            {{edit.as_table}}
+                        </div>
+                        <div class="col-md-4" style="margin-left:30%; padding-top:10px;">
+                            <input class="submit" type="submit">
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+

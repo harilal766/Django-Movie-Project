@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Login</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>login</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="">
+				<div class="form-style-1 user-pro" action="#">
+					<form method="POST" enctype="multipart/form-data" class="user">
+						{% csrf_token %}
+						{% for i in messages %}
+							<h4>{{i}}</h4>
+						{% endfor %}
+						<div class="row">
+							<div class="col-md-12 form-it">
+								<label>Username</label>
+								<input type="text" name="username" placeholder="Enter your Username">
+							</div>
+							<div class="col-md-12 form-it">
+								<label>Password</label>
+								<input type="password" name="password" placeholder="Enter your password">
+							</div>
+							<div class="col-md-4" style="margin-left:30%;">
+								<input class="submit" type="submit" value="Login">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

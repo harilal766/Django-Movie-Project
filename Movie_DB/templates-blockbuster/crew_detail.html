@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="hero hero3">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- <h1> movie listing - list</h1>
+				<ul class="breadcumb">
+					<li class="active"><a href="#">Home</a></li>
+					<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+				</ul> -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- celebrity single section-->
+<div class="page-single movie-single cebleb-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="mv-ceb">
+					<img src="{{context.photo.url}}" alt="">
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="movie-single-ct">
+					<h1 class="bd-hd">{{context.name}}</h1>
+					<p class="ceb-single">{{context.designation}}</p>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overviewceb">Overview</a></li>
+
+<!--								<li><a href="#mediaceb"> Media</a></li> -->
+								<li><a href="#filmography">filmography</a></li>                        
+							</ul>
+						    <div class="tab-content">
+						        <div id="overviewceb" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<p>{{context.about}}</p>
+											<p class="time"><a href="#">See full bio <i class="ion-ios-arrow-right"></i></a></p>
+						            	</div>
+<!--						            	<div class="col-md-4 col-xs-12 col-sm-12">-->
+<!--						            		<div class="sb-it">-->
+<!--						            			<h6>Fullname:  </h6>-->
+<!--						            			<p><a href="#">Hugh Jackman</a></p>-->
+<!--						            		</div>-->
+<!--						            		<div class="sb-it">-->
+<!--						            			<h6>Date of Birth: </h6>-->
+<!--						            			<p>June 24, 1982</p>-->
+<!--						            		</div>-->
+<!--						            		<div class="sb-it">-->
+<!--						            			<h6>Country:  </h6>-->
+<!--						            			<p>Australian</p>-->
+<!--						            		</div>-->
+<!--						            		<div class="sb-it">-->
+<!--						            			<h6>Height:</h6>-->
+<!--						            			<p>186 cm/p>-->
+<!--						            		</div>-->
+<!--						            		<div class="ads">-->
+<!--												<img src="{% static 'images/uploads/ads1.png" alt="">-->
+<!--											</div>-->
+<!--						            	</div>-->
+						            </div>
+						        </div>
+					       	 	<div id="filmography" class="tab">
+						        	<div class="row">
+						            	<div class="rv-hd">
+						            		<div>
+						            			<h3>Filmography of</h3>
+					       	 					<h2>{{context.name}}</h2>
+						            		</div>
+										
+						            	</div>
+										{% include 'count_filter.html' %}
+										{% block count %}
+										{% endblock %}
+										<!-- movie cast -->
+										<div class="mvcast-item">
+											{% for i in filmography %}
+											<div class="cast-it">
+												<div class="cast-left cebleb-film">
+													<img src="{{i.poster}}" alt="">
+													<div>
+														<a href="{% url 'Movie:view_movie' i.slug %}">{{i.name}} </a>
+<!--														<p class="time">Logan</p>-->
+													</div>
+													
+												</div>
+												<p>...  {{i.year}}</p>
+											</div>
+											{% endfor %}
+										</div>
+						            </div>
+					       	 	</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+<!-- celebrity single section-->
+{% endblock %}

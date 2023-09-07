@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+	body{
+	background-color:#020d18;
+}
+</style>
+<!--SLIDER-->
+<div class="slider sliderv2">
+	<div class="container" style="margin-top:95px; margin-left:485px;">
+		<div class="row">
+	    	<div class="slider-single-item">
+				{% for i in mov %}
+	    		<div class="movie-item">
+	    			<div class="row">
+	    				<div class="col-md-6">
+	    					<div class="title-in">
+			    				<h1><a href="#">{{i.name}}<br>
+								<span>{{i.year}}</span></a></h1>
+								<div class="cate" style="height:50px;">
+									{% for genre in i.genres.all %}
+			    					<span class="green"><a href="#">{{genre.name}}</a></span>
+									{% endfor %}
+			    				</div>
+			    				<div class="mv-details">
+			    					<p><i class="ion-android-star"></i><span>{{i.rating}}</span> /10</p>
+			    					<ul class="mv-infor">
+			    						<li>  Run Time: {{i.duration}} </li>
+			    						<li>  Rated: {{i.certification}}  </li>
+			    						<li>  Release: {{i.release}}</li>
+			    					</ul>
+			    				</div>
+			    				<div class="btn-transform transform-vertical">
+									<div><a href="{% url 'Movie:view_movie' i.slug %}" class="item item-1 redbtn">more detail</a></div>
+									<div><a href= "{% url 'Movie:view_movie' i.slug %}" class="item item-2 redbtn hvrbtn">more detail</a></div>
+								</div>
+			    			</div>
+	    				</div>
+	    				<div class="col-md-4 col-sm-8 ">
+		    				<div class="mv-img-2">
+			    				<a href="#"><img src="{{i.poster.url}}" alt=""></a>
+			    			</div>
+		    			</div>
+	    			</div>
+	    		</div>
+				{% endfor %}
+	    	</div>
+	    </div>
+	</div>
+</div>
+<div class="movie-items full-width">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="title-hd">
+				<h2>Filter</h2>
+				<a href="{% url 'Movie:view_movies' %}" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+			</div>
+			<div class="tabs">
+				<style>
+					.filter{
+    					background:none;
+    					border:none;
+    					margin:0;
+   						padding:0;
+   						padding-left:5px;
+					}
+					input[type="submit"].filter:hover {
+  					color: #d0dae4;
+					}
+				</style>
+				<form method="GET" action="{% url 'Movie:home' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+					<ul class="tab-links">
+						<li><input class="filter item redbtn" style="padding-left:0px;" type="submit" name="popular" value="Popular"></li>
+						<li><input  class="filter item redbtn" type="submit" name="theater" value="In theater"></li>
+						<li><input  class="filter item redbtn" type="submit" name="top" value="Top rated"></li>
+<!--						<select>-->
+<!--							<option  class="filter item redbtn" type="submit" value="top">Top rated</option>-->
+<!--						</select>-->
+
+						<li><a href="#tab4-h2"> #Most reviewed</a></li>
+						{% for genre in i.genres.all %}
+						<li><a href="#tab4-h2">{{genre.name}}</a></li>
+						{% endfor %}
+					</ul>
+				</form><br>
+
+				
+<!--				<form id="filter" method="GET" enctype="multipart/form-data">-->
+<!--				{% csrf_token %}-->
+<!--					<ul class="tab-links">-->
+<!--						<input class="filter item redbtn" type="submit" name="popular" value="Popular">-->
+<!--						<li onclick="submit_form()"><a  type="submit" name="top">Top rated</a></li>-->
+
+<!--					</ul>-->
+<!--				</form><br>-->
+<!--				<script>-->
+<!--    				function submit_form(){-->
+<!--        			var form = document.getElementById("my_form");-->
+<!--        			form.submit();-->
+<!--    				}-->
+<!--    			</script>-->
+				<div class="tab-content">
+					<div id="tab1-h2" class="tab active">
+						<div class="row">
+							<div class="slick-multiItem2">
+								{% for i in filtered %}
+								<div class="slide-it">
+			            			<div class="movie-item">
+				            			<div class="mv-img">
+				            				<img src="{{i.poster.url}}" alt="">
+				            			</div>
+				            			<div class="hvr-inner">
+				            				<a  href="{% url 'Movie:view_movie' i.slug %}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+				            			</div>
+				            			<div class="title-in">
+				            				<h6><a href="#">{{i.name}}</a></h6>
+				            				<p><i class="ion-android-star"></i><span>{{i.rating}}</span> /10</p>
+				            			</div>
+				            		</div>
+			            		</div>
+								{% endfor %}
+							</div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="trailers full-width">
+		<div class="row ipad-width">
+			<div class="col-md-12">
+				<div class="title-hd">
+					<h2>trailers</h2>
+					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+				</div>
+				<div class="videos">
+				 	<div class="slider-for-2 video-ft">
+						{% for i in mov %}
+					   <div>
+					    	<iframe class="item-video" src="#" data-src="{{i.trailer}}"></iframe>
+					    </div>
+						{% endfor %}
+					</div>
+					<div class="slider-nav-2 thumb-ft">
+						{% for i in mov %}
+						<div class="item">
+							<div class="trailer-img">
+								<img src="{{i.cover.url}}"  alt="photo by Barn Images" width="4096" height="2737">
+							</div>
+							<div class="trailer-infor">
+								<a href="{% url 'Movie:view_movie' i.slug %}">
+									<h4 class="desc">{{i.name}}</h4>
+								</a>
+	                        	<p>{{i.year}}</p>
+	                        </div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+
+{% endblock %}

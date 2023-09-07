@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1 style="margin-left:0.5%;">Edit movie : {{movie.name}} {{movie.year}}</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Edit movie</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="">
+				<div class="form-style-1 user-pro" action="#">
+					<form method="POST" enctype="multipart/form-data" class="user">
+					  {% csrf_token %}
+					  <div class="row">
+						  {{edit.as_table}}
+                      </div>
+					  <div class="col-md-4" style="margin-left:30%; padding-top:10px;" >
+                      	 <input class="submit" type="submit">
+                      </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

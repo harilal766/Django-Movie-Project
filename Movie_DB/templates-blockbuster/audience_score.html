@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<style>
+	.form-control{
+	border-radius:4px;
+  	background:#223B50;
+  	padding: 20px;
+	}
+</style>
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Post your score for : {{movie}}</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Audience score</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-12">
+				<div class="form-style-1 user-pro" action="#">
+					<form method="POST" enctype="multipart/form-data" class="user">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-md-12 form-it">
+								<label>Your Score</label>
+								<input class="form-control" type="text" name="score" placeholder="write your review">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input class="submit" type="submit" value="submit">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
