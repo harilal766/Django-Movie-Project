@@ -83,19 +83,20 @@
 							<p>Your Score: {{i.score}}</p>
 							{% endfor %}
 						</div>
-						<div class="rate-star">
-							<p>Audience Score: </p>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star-outline"></i>
-						</div>
+<!--						<div class="rate-star">-->
+<!--							<p>Audience Score: </p>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star"></i>-->
+<!--							<i class="ion-ios-star-outline"></i>-->
+<!--						</div>-->
 					</div>
 					<div class="movie-tabs">
 						<div class="tabs">
@@ -165,10 +166,10 @@
 														<h3><i class="ion-android-delete"></i></h3>
 													</a>
 													{% endif %}
-													<div class="no-star">
-														<i class="ion-android-star">{{i.score}}</i>
-														<i class="ion-android-star last"></i>
-													</div>
+<!--													<div class="no-star">-->
+<!--														<i class="ion-android-star">{{i.score}}</i>-->
+<!--														<i class="ion-android-star last"></i>-->
+<!--													</div>-->
 													<p class="time">
 														Posted on : {{i.date}} <a href="#">by: {{i.user}}</a>
 													</p>
@@ -180,7 +181,7 @@
 										<div class="topbar-filter">
 											<label>Reviews per page:</label>
 											<select>
-												<option value="range">5 Reviews</option>
+												<option value="range">{{review_count}} Reviews</option>
 												<option value="saab">10 Reviews</option>
 											</select>
 											<div class="pagination2">
