@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Delete confirmation</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Delete confirmation</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="">
+				<div class="form-style-1 user-pro" action="#">
+					<form method="POST" enctype="multipart/form-data" class="user">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-md-12">
+								{% if movie %}
+                            	<label style="font-size:45px; margin-left:6%;">Are you sure about deleting {{movie.name}} ({{movie.year}}) ?</label>
+								{% elif i %}
+								<label style="font-size:45px; margin-left:2%;">Are you sure about deleting the review of {{i.movie.name}} ?</label>
+								{% endif %}
+								{{form.as_p}}
+							</div>
+							<div class="col-md-4" style="margin-left:30%;">
+								<input class="submit" type="submit" value="Confirm">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

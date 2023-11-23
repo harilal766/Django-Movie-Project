@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					{% if count == 1 %}
+					<h1>{{count}} result found for : {{query}} - {{check}}</h1>
+					{% elif count > 1 %}
+					<h1>{{count}} results found for : {{query}}</h1>
+					{% else %}
+					<h1>No results found for : {{query}}</h1>
+					{% endif %}
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Search</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-11">
+				{% include 'count_filter.html' %}
+				{% block count %}{% endblock %}
+<!--				movie search results-->
+				{% for i in result %}
+				<div class="movie-item-style-2 userrate">
+					<a href="{% url 'Movie:view_actor' i.slug %}">
+					<img src="{{i.photo.url}}" alt="">
+					</a>
+					<div class="mv-item-infor" style="padding:10px;">
+						<h6><a href="{% url 'Movie:view_actor' i.slug %}">{{i.name}}<span>  - {{i.year}}</span></a></h6>
+						<p class="rate"><i class="ion-android-star"></i><span>{{i.rating}}</span> /10</p>
+						<p>{{i.about}}</p>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

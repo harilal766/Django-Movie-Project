@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>{{user}}’s Watchlist</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>WATCHLIST</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width2">
+			{% include 'user.html' %}
+			{% block user %}{% endblock %}
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				{% if watchlist %}
+				<div class="flex-wrap-movielist grid-fav">
+					{% for i in watchlist %}
+						<div class="movie-item-style-2 movie-item-style-1 style-3">
+							<img src="{{i.movie.poster.url}}" alt="">
+							<div class="hvr-inner">
+	            				<a href="{% url 'Watchlist:delete_watchlist' i.movie.id %}"><i class="ion-android-arrow-dropright"></i>Remove</a>
+	            			</div>
+							<div class="mv-item-infor">
+								<h6><a href="{% url 'Movie:view_movie' i.movie.slug %}">{{i.movie.name}}</a></h6>
+								<p class="rate"><i class="ion-android-star"></i><span>{{i.movie.rating}}</span> /10</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				{% else %}
+				<div class="flex-wrap-movielist grid-fav">
+						<div class="movie-item-style-2 movie-item-style-1 style-3">
+							<div class="mv-item-infor">
+								<h6 style="font-size:180px;"><a>Your watchlist is empty</a></h6>
+							</div>
+						</div>
+				</div>
+				{% endif %}
+				<div class="topbar-filter">
+					<label>Movies in watchlists :</label>
+					<select>
+						<option value="range">{{watchlist_count}}</option>
+					</select>
+					
+					<div class="pagination2">
+						<span>Page 1 of 2:</span>
+						<a class="active" href="#">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">...</a>
+						<a href="#">78</a>
+						<a href="#">79</a>
+						<a href="#"><i class="ion-arrow-right-b"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

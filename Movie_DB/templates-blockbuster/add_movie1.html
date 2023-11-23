@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Edit movie - {{movie.name}}</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Add movie</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="">
+				<div class="form-style-1 user-pro" action="#">
+					<form method="POST" enctype="multipart/form-data" class="user" action="Movie:edit_movie/{{movie.slug}}">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-md-12 form-it">
+								<label>Movie Name</label>
+								<input type="text" name="name" value="{{movie.name}}" required placeholder="Add movie title">
+							</div>
+							<div class="col-md-12 form-it">
+								<label>Released Year</label>
+								<input type="text" name="year" value="{{movie.year}}" required placeholder="Add movie title">
+							</div>
+							<div class="col-md-12 form-it">
+								<label>Released Date</label>
+								<input type="text" name="release" value="{{movie.release}}" required placeholder="Add Released date">
+							</div>
+							<div class="col-md-12 form-it">
+								<label>Language</label>
+								<input type="text" name="language" value="{{movie.language}}" required placeholder="Add Language">
+							</div>
+
+							<div class="col-md-12 form-it">
+								<label>Rating</label>
+								<input type="text" name="rating"  value="{{movie.rating}}" required placeholder="Add IMDB rating">
+							</div>
+
+							<div>
+								<div class="col-md-6 form-it">
+									<label>Poster</label>
+									<input type="file" name="poster" value="{{movie.poster.url}}" required placeholder="Add Movie Poster">
+								</div>
+								<div class="col-md-6 form-it">
+									<label>Cover image</label>
+									<input type="file" name="cover" value="{{movie.cover.url}}" required placeholder="Add a cover image">
+								</div>
+							</div>
+
+							<div class="col-md-12 form-it">
+								<label>Duration</label>
+								<input type="text" name="duration" value="{{movie.duration}}" required placeholder="Add movie duration">
+							</div>
+							<div>
+								<div class="col-md-6 form-it">
+									<label>Streaming{{movie.streaming.name}}</label>
+									<select name="streaming">
+										{% for s in movie.streaming.name %}
+										<option value={{s.id}}>{{s.name}}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="col-md-6 form-it">
+									<label>Streaming link</label>
+									<input type="text" name="ott" value="{{movie.ott}}" required placeholder="Add streaming link">
+								</div>
+							</div>
+							<div>
+								<div class="col-md-3 form-it">
+									<label>Actors</label>
+									<select name="actors" multiple>
+										{% for a in movie.actors.all %}
+										<option value="{{a.id}}">{{a.name}}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="col-md-3 form-it">
+									<label>Director</label>
+									<select name="director">
+										{% for d in director %}
+										<option value="{{d.id}}">{{d.name}}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="col-md-3 form-it">
+									<label>Writers</label>
+									<select name="writers" multiple>
+										{% for w in movie.writers.all %}
+										<option value="{{w.id}}">{{w.name}}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="col-md-3 form-it">
+									<label>Cinematographer</label>
+									<select name="cinematographer">
+										{% for c in cinematographer %}
+										<option value="{{c.id}}">{{c.name}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-12 form-it">
+								<label>Synopsis</label>
+								<textarea type="text" name="synopsis" value="{{movie.synopsis}}"  rows="14" cols="10" class="form-control" required placeholder="Write movie synopsis.">
+								</textarea>
+							</div>
+
+							<div class="col-md-12 form-it">
+								<label>Trailer</label>
+								<input type="text" name="trailer" value="{{movie.trailer}}" required placeholder="Add trailer link.">
+							</div>
+
+
+
+
+							<div class="col-md-4" style="margin-left:30%;">
+								<input class="submit" type="submit" value="Submit">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

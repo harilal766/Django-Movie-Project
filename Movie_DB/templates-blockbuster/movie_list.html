@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-single">
+	<div class="container" style="margin-top:100px;">
+		<div class="row ipad-width">
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="flex-wrap-movielist" style="margin-top:80px;">
+					{% for i in mov %}
+						<div class="movie-item-style-2 movie-item-style-1">
+							<img src="{{i.poster.url}}" alt="">
+							<div class="hvr-inner">
+	            				<a  href="{% url 'Movie:view_movie' i.slug %}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+	            			</div>
+							<div class="mv-item-infor">
+								<h6><a href="{% url 'Movie:view_movie' i.slug %}">{{i.name}}</a></h6>
+								<p class="rate"><i class="ion-android-star"></i><span>{{i.rating}}</span> /10</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>		
+				<div class="topbar-filter">
+					<label>No. of movies :</label>
+					<select>
+						<option value="range">{{movie_count}}</option>
+					</select>
+
+					<div class="pagination2">
+						<span>Page 1 of 2:</span>
+						<a class="active" href="#">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">...</a>
+						<a href="#">78</a>
+						<a href="#">79</a>
+						<a href="#"><i class="ion-arrow-right-b"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12" style="margin-top:80px;">
+				<div class="sidebar">
+					<div class="search-form">
+						<h4 class="sb-title">Search for movie</h4>
+						<form class="form-style-1" method="GET" action="{% url 'Search:advanced_search' %}" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-md-12 form-it">
+									<label>Movie name</label>
+										<input type="text" name='movie_query' placeholder="Enter Movie name">
+								</div>
+								<div class="col-md-12 form-it">
+									<label>Genres & Subgenres</label>
+									<div class="group-ip">
+										<input type="text" name="genre_query" placeholder="Enter Genre">
+									</div>
+								</div>
+								<div class="col-md-12 form-it">
+									<label>Rating Range</label>
+									<input type="text" name="rating_query" placeholder="Enter Rating">
+								</div>
+								<div class="col-md-12 form-it">
+									<label>Release Year</label>
+									<div class="row">
+										<div class="col-md-6">
+											<input type="text" name="from_query" placeholder="From">
+										</div>
+										<div class="col-md-6">
+											<input type="text" name="to_query" placeholder="To">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12 ">
+									<input class="submit" type="submit" value="submit">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

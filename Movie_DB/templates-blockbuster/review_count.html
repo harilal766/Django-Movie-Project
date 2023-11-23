@@ -1,0 +1,11 @@
+{% load static %}
+<div class="topbar-filter">
+    {% if count == 1 %}
+    <p>Found <span>{{count}} review</span> in total</p>
+    {% elif count > 1 %}
+    <p>Found <span>{{count}} reviews</span> in total</p>
+    {% else %}
+    <p>Found <span>0 review</span> in total</p>
+    {% endif %}
+
+</div>
