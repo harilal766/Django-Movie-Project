@@ -55,6 +55,7 @@
 						{% endfor %}
 					</h1>
 					<div class="social-btn" style="padding-top:10px;">
+						# To know if a movie is in watchlist or not
 						{% if not watchlist.exists %}
 						<a href="{% url 'Watchlist:add_watchlist' movie.id %}" class="parent-btn">
 							<i class="ion-plus"></i> Add to Watchlist</a>
