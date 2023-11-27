@@ -13,6 +13,10 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DeleteView, UpdateView
 from django.urls import reverse_lazy
+# importing date class from datetime module
+from datetime import date
+
+
 
 from django.views.generic import DetailView
 # API
@@ -161,9 +165,12 @@ def view_movie(request, mslug):
     scores = Audience_Review.objects.filter(movie__slug = mslug, user = user)
     reviews = Audience_Review.objects.filter(movie__slug = mslug)
     related = Movie.objects.filter(Q(name = movie.name))
+    # creating the date object of today's date
+    current_year=(date.today()).year
     return render(request, 'moviesingle.html', {'movie':movie, 'watchlist':watchlist,
-                                              'review':reviews, 'review_count':reviews.count(), 
-                                              'scores':scores, 'related':related, 'count':related.count()})
+                                            'review':reviews, 'review_count':reviews.count(),
+                                            'scores':scores, 'related':related, 'count':related.count(),
+                                            'current_year':current_year})
 
 
 @login_required

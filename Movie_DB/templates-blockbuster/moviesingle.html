@@ -63,6 +63,10 @@
 						<a class="parent-btn">
 							<i class="ion-android-done"></i> Already in Watchlist</a>
 						{% endif %}
+						{% if movie.year == current_year %}
+						<a href="#" class="parent-btn">
+							<i class="ion-plus"></i> Book Tickets</a>
+						{% endif%}
 						{% if user.is_superuser %}
 						<a href="{% url 'Movie:delete_movie' movie.id %}" class="parent-btn">
 							<i class="ion-android-delete"></i>Delete
