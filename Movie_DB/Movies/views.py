@@ -106,10 +106,10 @@ def add_movie(request):
                                          director_id = director,  cinematographer_id = cinematographer, 
                                          synopsis = synopsis,  )
         movie.save()
-        for actor in actors:
-            movie.actors.add(Actor.objects.get(id = int(actor)))
-        for writer in writers:
-            movie.writers.add(Writer.objects.get(id = int(writer)))
+        for actor_id in actors:
+            movie.actors.add(Actor.objects.get(id = int(actor_id)))
+        for writer_id in writers:
+            movie.writers.add(Writer.objects.get(id = int(writer_id)))
         return redirect('Movie:view_movies')
     else:
         pass
