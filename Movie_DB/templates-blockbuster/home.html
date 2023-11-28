@@ -15,7 +15,7 @@
 	    			<div class="row">
 	    				<div class="col-md-6">
 	    					<div class="title-in">
-			    				<h1><a href="#">{{i.name}}<br>
+			    				<h1><a href="{% url 'Movie:view_movie' i.slug %}">{{i.name}}<br>
 								<span>{{i.year}}</span></a></h1>
 								<div class="cate" style="height:50px;">
 									{% for genre in i.genres.all %}
@@ -38,7 +38,7 @@
 	    				</div>
 	    				<div class="col-md-4 col-sm-8 ">
 		    				<div class="mv-img-2">
-			    				<a href="#"><img src="{{i.poster.url}}" alt=""></a>
+			    				<a href="{% url 'Movie:view_movie' i.slug %}"><img src="{{i.poster.url}}" alt=""></a>
 			    			</div>
 		    			</div>
 	    			</div>

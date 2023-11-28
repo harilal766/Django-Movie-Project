@@ -3,6 +3,7 @@ from django.shortcuts import render
 from User.forms import Userform
 from django.views.generic import UpdateView
 from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView
 # Create your views here.
 def edit_user(request):
     user=request.user
@@ -32,3 +33,10 @@ def Update_User(UpdateView):
 def userprofile(request):
     user=request.user
     return render(request,'editprofile.html',{'user':user})
+
+class Password_change(PasswordChangeView):
+    form_class=""
+    success_url = reverse_lazy()
+
+def password_success(request):
+    return render(request,'password_changed.html')
