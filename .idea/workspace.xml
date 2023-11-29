@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0548314f-661d-4267-9e13-4c0d84618478" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Movie_DB/User/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_DB/User/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Movie_DB/User/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_DB/User/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_DB/Movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_DB/Movies/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_DB/Movies/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_DB/Movies/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_DB/User/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_DB/User/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Movie_DB/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_DB/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Movie_DB/templates-blockbuster/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_DB/templates-blockbuster/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

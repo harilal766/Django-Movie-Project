@@ -196,4 +196,10 @@ class Delete_Review(Delete_Movie):
     context_object_name  =  'i'
     success_url  =  reverse_lazy('Movie:view_movies')
 
-
+def delete_review(request,rslug):
+    try:
+        review=Audience_Review.objects.get(slug=rslug)
+        review.delete()
+    except:
+        pass
+    return redirect(request)
