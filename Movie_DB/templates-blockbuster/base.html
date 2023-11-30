@@ -67,11 +67,6 @@
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-left">
 						{% if user.is_superuser %}
-						<li class="nav-item">
-							<a href="https://www.notion.so/Project-Movie-Database-9ff3fd0e1d8f43b18018d465102b7c83?pvs=4">
-							NOTEPAD
-							</a>
-						</li>
 						<li class="nav-item"><a href="{% url 'Movie:add_movie' %}">Add Movie</a></li>
 						{% endif %}
 						{% if user.is_authenticated %}

@@ -18,9 +18,10 @@ from datetime import date
 
 
 
-from django.views.generic import DetailView
-# API
-# from rest_framework import Viewsets
+
+# Global keywords
+current_year=(date.today()).year
+
 # Create your views here.
 def home(request):
     m  =  Movie.objects.all()
@@ -37,7 +38,7 @@ def home(request):
     elif popular:
         filtered = Movie.objects.filter(Q(rating__icontains = 8))
     elif theater:
-        filtered = Movie.objects.filter(year = '2023')
+        filtered = Movie.objects.filter(year = current_year)
     return render(request, 'home.html', {'mov':m, 'filtered':filtered})
 
 
@@ -108,7 +109,7 @@ def add_movie(request):
                                          poster = poster,  cover = cover,  duration = duration, 
                                          streaming_id = streaming,  ott = ott, 
                                          director_id = director,  cinematographer_id = cinematographer, 
-                                         synopsis = synopsis,  )
+                                         synopsis = synopsis)
         movie.save()
         for actor_id in actors:
             movie.actors.add(Actor.objects.get(id = int(actor_id)))
@@ -166,7 +167,6 @@ def view_movie(request, mslug):
     reviews = Audience_Review.objects.filter(movie__slug = mslug)
     related = Movie.objects.filter(Q(name = movie.name))
     # creating the date object of today's date
-    current_year=(date.today()).year
     return render(request, 'moviesingle.html', {'movie':movie, 'watchlist':watchlist,
                                             'review':reviews, 'review_count':reviews.count(),
                                             'scores':scores, 'related':related, 'count':related.count(),

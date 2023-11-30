@@ -25,7 +25,7 @@
                     <form method="POST" enctype="multipart/form-data" class="user">
                     {% csrf_token %}
                         <div>
-                            {{edit.as_table}}
+                            {{edit.as_p}}
                         </div>
                         <div class="col-md-4" style="margin-left:30%; padding-top:10px;">
                             <input class="submit" type="submit">

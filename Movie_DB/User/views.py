@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 # from django.contrib.auth.models import User
 from User.forms import Userform
 from django.views.generic import UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.models import User
 # Create your views here.
 def edit_user(request):
     user=request.user
@@ -24,14 +25,19 @@ def edit_password(request):
             user.password.update(password)
     return render(request,'editprofile.html')
 
-def Update_User(UpdateView):
+class Update_User(UpdateView):
     model=User
     template_name='userprofile.html'
     fields=['username','password']
     success_url=reverse_lazy('User:userprofile')
 
 def userprofile(request):
-    user=request.user
+    try:
+        user=request.user
+        user.save()
+        return redirect(request,'Movie:home')
+    except:
+        pass
     return render(request,'editprofile.html',{'user':user})
 
 class Password_change(PasswordChangeView):
