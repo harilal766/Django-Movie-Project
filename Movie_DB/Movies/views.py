@@ -203,3 +203,17 @@ def delete_review(request,rslug):
     except:
         pass
     return redirect(request)
+
+from rest_framework import viewsets
+from Movies.serializers import MovieSerializer,UserSerializer
+from Movies.models import Movie
+from rest_framework.permissions import AllowAny
+class MovieViewSet(viewsets.ModelViewSet):
+    permission_classes=[AllowAny,]
+    queryset=Movie.objects.all()
+    serializer_class=MovieSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    permission_classes=[AllowAny,]
+    queryset=User.objects.all()
+    serializer_class = UserSerializer
