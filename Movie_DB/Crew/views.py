@@ -25,3 +25,13 @@ def view_cinematographer(request,cslug):
                                                'count': filmography.count()})
 
 
+from rest_framework import viewsets
+from rest_framework.permissions import AllowAny
+from Crew.serializers import ActorSerializer
+from Crew.models import Actor
+class ActorViewSet(viewsets.ModelViewSet):
+    permission_class=[AllowAny,]
+    queryset=Actor.objects.all()
+    serializer_class=ActorSerializer
+
+

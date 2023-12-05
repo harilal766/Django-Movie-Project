@@ -15,12 +15,13 @@ from django.views.generic import DeleteView, UpdateView
 from django.urls import reverse_lazy
 # importing date class from datetime module
 from datetime import date
+from django.core.paginator import Paginator
 
 
 
 
 # Global keywords
-current_year=(date.today()).year
+current_year=str((date.today()).year)
 
 # Create your views here.
 def home(request):
@@ -34,12 +35,12 @@ def home(request):
         top = request.GET.get('top')
         theater = request.GET.get('theater')
     if top:
-        filtered = Movie.objects.filter(Q(rating__icontains = 9))
+        filtered = Movie.objects.filter(rating__contains = 9)
     elif popular:
         filtered = Movie.objects.filter(Q(rating__icontains = 8))
     elif theater:
         filtered = Movie.objects.filter(year = current_year)
-    return render(request, 'home.html', {'mov':m, 'filtered':filtered})
+    return render(request, 'home.html',{'mov':m, 'filtered':filtered})
 
 
 def register(request):
@@ -71,9 +72,14 @@ def usersignout(request):
     return home(request)
 
 
+
 def view_movies(request):
     m = Movie.objects.all()
-    return render(request, 'movie_list.html', {'mov':m, 'movie_count':m.count()})
+    # set up pagination
+    p=Paginator(Movie.objects.all(),4)
+    page = request.GET.get('page')
+    movies=p.get_page(page)
+    return render(request, 'movie_list.html', {'context':movies, 'context_count':m.count()})
 
 
 @login_required
