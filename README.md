@@ -12,9 +12,16 @@
 | API building      | Django restframework  |
 | Database          | SQLite3               |
 
+
 # Project Setup
 ### Manual Setup
-1. Clone project - git clone https://github.com/harilal766/Django-Movie-Project
-2. Install rest framework - pip install djangorestframework
+1. Clone the project 
+```
+git clone https://github.com/harilal766/Django-Movie-Project
+```
+2. Install rest framework
+```
+pip install djangorestframework
+```
 
 
