@@ -7567,6 +7567,11 @@ p.ceb-single {
 .buster-light .topbar-filter .pagination2 a:hover {
   color: #dd003f;
 }
+/* Watchlist empty */
+.mv-item-infor1 h6 a {
+    color: #020d18;
+}
+
 .buster-light .movie-item-style-2 .mv-item-infor h6 a {
   color: #020d18;
 }

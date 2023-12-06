@@ -1,0 +1,22 @@
+{% load static %}
+                <!-- Starting of pagination -->
+				<div class="topbar-filter">
+					<label>Total No. of movies :</label>
+					<select>
+						<option value="range">{{context_count}} </option>
+					</select>
+					<div class="pagination2">
+						{% if context.has_previous %}
+						<a href="?page=1"><i class="ion-arrow-left-b"></i></a>
+							<a href="?page={{context.previous_page_number}}">Previous</a>
+							<a href=""><span>Page {{context.number}} of {{context.paginator.num_pages}}</span></a>
+						{% endif %}
+						{% if context.has_next %}
+							<a href=""><span>Page {{context.number}} of {{context.paginator.num_pages}}</span></a>
+							<a href="?page={{context.next_page_number}}">Next</a>
+							<a href="?page={{context.paginator.num_pages}}">Last</a>
+							<a href="?page=1"><i class="ion-arrow-right-b"></i></a>
+						{% endif %}
+					</div>
+				</div>
+				<!-- Ending of pagination -->

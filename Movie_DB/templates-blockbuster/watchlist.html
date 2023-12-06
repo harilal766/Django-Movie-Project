@@ -21,10 +21,10 @@
 		<div class="row ipad-width2">
 			{% include 'user.html' %}
 			{% block user %}{% endblock %}
+			{% if context %}
 			<div class="col-md-9 col-sm-12 col-xs-12">
-				{% if watchlist %}
 				<div class="flex-wrap-movielist grid-fav">
-					{% for i in watchlist %}
+					{% for i in context %}
 						<div class="movie-item-style-2 movie-item-style-1 style-3">
 							<img src="{{i.movie.poster.url}}" alt="">
 							<div class="hvr-inner">
@@ -37,32 +37,20 @@
 						</div>
 					{% endfor %}
 				</div>
-				{% else %}
+			{% else %}
 				<div class="flex-wrap-movielist grid-fav">
-						<div class="movie-item-style-2 movie-item-style-1 style-3">
-							<div class="mv-item-infor">
-								<h6 style="font-size:180px;"><a>Your watchlist is empty</a></h6>
-							</div>
+					<div class="movie-item-style-2 movie-item-style-1 style-3">
+					<!--div class="movie-item-style-2 movie-item-style-1 style-3"-->
+						<div class="mv-item-infor">
+							<h6><a style="font-size:30px;">Your watchlist is empty</a></h6>
 						</div>
-				</div>
-				{% endif %}
-				<div class="topbar-filter">
-					<label>Movies in watchlists :</label>
-					<select>
-						<option value="range">{{watchlist_count}}</option>
-					</select>
-					
-					<div class="pagination2">
-						<span>Page 1 of 2:</span>
-						<a class="active" href="#">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">...</a>
-						<a href="#">78</a>
-						<a href="#">79</a>
-						<a href="#"><i class="ion-arrow-right-b"></i></a>
 					</div>
 				</div>
+			{% endif %}
+				<!-- Starting of pagination -->
+				{% include 'pagination.html' %}
+				{% block pagination %} {% endblock %}
+				<!-- Ending of pagination -->
 			</div>
 		</div>
 	</div>

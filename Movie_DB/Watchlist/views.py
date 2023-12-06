@@ -4,12 +4,16 @@ from Movies.views import *
 from Watchlist.models import Watchlist
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 # Create your views here.
 @login_required
 def view_watchlist(request):
     user=request.user
-    watchlist=Watchlist.objects.filter(user=user) #filter based on user
-    return render(request,'watchlist.html',{'watchlist':watchlist,'watchlist_count':watchlist.count()})
+    wat=Watchlist.objects.filter(user=user) #filter based on user
+    p=Paginator(Watchlist.objects.filter(user=user),4)
+    page=request.GET.get('page')
+    watchlist=p.get_page(page)
+    return render(request,'watchlist.html',{'context':watchlist,'context_count':wat.count()})
 @login_required
 def add_watchlist(request,p):
     user=request.user
