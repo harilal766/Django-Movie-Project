@@ -14,10 +14,10 @@
 
 
 # Project Setup
-  ### Manual Setup
-  1. Clone the project ``` git clone https://github.com/harilal766/Django-Movie-Project ```
-  2. Install rest framework ``` pip install djangorestframework ```
-  3. Install pillow ``` pip install pillow ```
-  4. Create superuser ``` python manage.py createsuperuser ```
+### Manual Setup
+1. Clone the project ``` git clone https://github.com/harilal766/Django-Movie-Project ```
+2. Install rest framework ``` pip install djangorestframework ```
+3. Install pillow ``` pip install pillow ```
+4. Create superuser ``` python manage.py createsuperuser ```
 
 
