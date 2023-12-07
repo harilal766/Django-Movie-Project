@@ -73,6 +73,7 @@
 						<li class="nav-item"><a href="{% url 'Movie:home' %}">Home</a></li>
 						<li class="nav-item"><a href="{% url 'Movie:view_movies' %}">movies</a></li>
 						<li class="nav-item"><a href="{% url 'Watchlist:view_watchlist' %}">Watchlist</a></li>
+						<li class="nav-item"><a href="{% url 'payment:add_booking' %}">Booking</a></li>
 						<li class="nav-item" ><a href="{% url 'User:edit_user' %}">Edit Profile</a></li>
 						<li class="nav-item"><a href="{% url 'Movie:signout' %}">Logout</a></li>
 						{% else %}
@@ -82,12 +83,13 @@
 					</ul>
 				</div>
 	    </nav>
+		<!--Search-->
 		<div>
 			<form  method="GET" enctype="multipart/form-data" action="{% url 'Search:search_movie' %}">
 				{% csrf_token %}
 				<div class="form-style-1">
 					<input type="text" name="query" placeholder="Search for a movie or celebrity that you are looking for">
-					<input style="margin-top:1%; width:80px; display:inline-block;" class="submit" type="submit" value="Search">
+					<input style="display:block; margin-top:1%; width:80px;" class="submit" type="submit" value="Search">
 				</div>
 			</form>
 		</div>

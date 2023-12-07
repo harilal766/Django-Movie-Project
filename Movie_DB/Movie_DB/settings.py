@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # apps
-    'Movies','Crew','Watchlist',
+    'Movies','Crew','Watchlist','payment',
     # 'Review',
     'Details','Search','User',
     'rest_framework'
