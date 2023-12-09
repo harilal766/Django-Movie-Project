@@ -27,7 +27,7 @@ urlpatterns = [
     path('watchlist/',include('Watchlist.urls')),
     path('search/',include('Search.urls')),
     path('user/',include('User.urls')),
-    path('booking/',include('payment.urls')),
+    path('booking/',include('purchase.urls')),
 ]
 
 if settings.DEBUG:

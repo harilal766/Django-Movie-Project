@@ -43,11 +43,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "H:/Python Fullstack/Extra"
+    "last_opened_file_path": "H:/Python Fullstack/Django/movieproject"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\Python Fullstack\Django\movieproject\Movie_DB\purchase" />
       <recent name="H:\Python Fullstack\Django\movieproject\Movie_DB\payment" />
     </key>
   </component>
